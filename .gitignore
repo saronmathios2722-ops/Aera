@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# logs and team scripts
+*.log
+*.sh
+*.py
+gh_repos.txt
+src/middleware.ts.bak

@@ -1,11 +1,11 @@
 {
-  "name": "Auréve",
-  "short_name": "Auréve",
-  "description": "Your smartest fashionable best friend who protects your wallet.",
+  "name": "Aera",
+  "short_name": "Aera",
+  "description": "Premium AI-powered fashion sanctuary and intentional spending coach.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "background_color": "#F9F7F2",
+  "theme_color": "#1A1A1A",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",

@@ -5,7 +5,7 @@ import { db } from "./db";
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      name: "Auréve Account",
+      name: "Aera Account",
       credentials: {
         email: { label: "Email", type: "email", placeholder: "hello@aureve.com" },
         password: { label: "Password", type: "password" }
