@@ -15,17 +15,17 @@ export const authOptions: NextAuthOptions = {
 
         // In a real app, we would verify the password hash.
         // For this demo/environment, we'll just find or create the user.
-        let user = db.users.getByEmail(credentials.email);
+        let user = await db.users.getByEmail(credentials.email);
 
         if (!user) {
           const id = Math.random().toString(36).substring(2, 15);
-          db.users.create({
+          await db.users.create({
             id,
             email: credentials.email,
             name: credentials.email.split('@')[0],
           });
-          db.profiles.create(id);
-          user = db.users.getByEmail(credentials.email);
+          await db.profiles.create(id);
+          user = await db.users.getByEmail(credentials.email);
         }
 
         return {

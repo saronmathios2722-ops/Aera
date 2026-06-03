@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     const { purchaseId, reflectiveAnswer, action } = await req.json();
     // action could be 'approve', 'cancel', or 'reflect'
 
-    const purchase = db.purchases.getById(purchaseId);
+    const purchase = await db.purchases.getById(purchaseId);
     if (!purchase) {
       return NextResponse.json({ error: "Purchase not found" }, { status: 404 });
     }
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
        status = 'approved';
     }
 
-    db.purchases.updateStatus(purchaseId, status, reflectiveAnswer);
+    await db.purchases.updateStatus(purchaseId, status, reflectiveAnswer);
 
     // Update intentionality score
     await updateIntentionalityScore((session.user as any).id);

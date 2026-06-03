@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     const userId = (session.user as any).id;
     const discoveryId = Math.random().toString(36).substring(2, 15);
 
-    db.query(
+    await db.query(
       "INSERT INTO discoveries (id, user_id, item_name, url, image_url) VALUES (?, ?, ?, ?, ?)",
       [discoveryId, userId, itemName, url || '', imageUrl || '']
     );

@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     const { itemName, price, imageUrl, url, discoveryId } = await req.json();
     const userId = (session.user as any).id;
 
-    const profile = db.profiles.getById(userId);
+    const profile = await db.profiles.getById(userId);
     if (!profile) {
       return NextResponse.json({ error: "Profile not found" }, { status: 404 });
     }
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
 
     const purchaseId = Math.random().toString(36).substring(2, 15);
     
-    db.purchases.create({
+    await db.purchases.create({
       id: purchaseId,
       user_id: userId,
       item_name: itemName,
@@ -38,9 +38,9 @@ export async function POST(req: Request) {
     });
 
     if (evaluation.shouldIntercept) {
-      db.purchases.updateStatus(purchaseId, 'cooldown');
+      await db.purchases.updateStatus(purchaseId, 'cooldown');
     } else {
-      db.purchases.updateStatus(purchaseId, 'approved');
+      await db.purchases.updateStatus(purchaseId, 'approved');
       // Update score if approved immediately
       await updateIntentionalityScore(userId);
     }

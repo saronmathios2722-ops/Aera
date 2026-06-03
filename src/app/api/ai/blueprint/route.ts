@@ -13,7 +13,7 @@ export async function POST() {
 
   try {
     const userId = (session.user as any).id;
-    const profile = db.profiles.getById(userId);
+    const profile = await db.profiles.getById(userId);
 
     if (!profile || !profile.onboarding_data) {
       return NextResponse.json({ error: "Profile not found" }, { status: 404 });
@@ -22,7 +22,7 @@ export async function POST() {
     const onboardingData = JSON.parse(profile.onboarding_data);
     const blueprint = await generateStyleBlueprint(onboardingData);
 
-    db.profiles.update(userId, {
+    await db.profiles.update(userId, {
       style_blueprint: JSON.stringify(blueprint),
     });
 

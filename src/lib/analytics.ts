@@ -4,7 +4,7 @@ export async function updateIntentionalityScore(userId: string) {
   try {
     // Join purchases with discoveries to find time difference
     // Only count approved purchases that have a discovery linked
-    const stats = db.query(`
+    const stats = await db.query(`
       SELECT 
         AVG(julianday(p.created_at) - julianday(d.created_at)) * 24 as avg_hours
       FROM purchases p
@@ -15,7 +15,7 @@ export async function updateIntentionalityScore(userId: string) {
     const avgHours = stats[0]?.avg_hours || 0;
 
     // Update user profile with the latest score
-    db.profiles.update(userId, {
+    await db.profiles.update(userId, {
       intentionality_score: avgHours
     });
 

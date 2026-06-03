@@ -12,12 +12,12 @@ export async function GET() {
 
   try {
     const userId = (session.user as any).id;
-    let profile = db.profiles.getById(userId);
+    let profile = await db.profiles.getById(userId);
 
     if (!profile) {
       // Create if doesn't exist (should have been created on sign in, but just in case)
-      db.profiles.create(userId);
-      profile = db.profiles.getById(userId);
+      await db.profiles.create(userId);
+      profile = await db.profiles.getById(userId);
     }
 
     return NextResponse.json(profile);
