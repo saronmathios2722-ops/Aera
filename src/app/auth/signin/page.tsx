@@ -1,5 +1,6 @@
 'use client';
 
+import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -61,7 +62,7 @@ export default function SignIn() {
           <div className="mt-12 text-center">
             <p className="text-xs text-aureve-taupe leading-relaxed">
               By entering, you agree to our <br />
-              <span className="text-aureve-charcoal underline cursor-pointer">Terms of Curation</span> and <span className="text-aureve-charcoal underline cursor-pointer">Privacy Haven</span>.
+              <Link href="/terms-of-curation" className="text-aureve-charcoal underline cursor-pointer hover:text-aureve-accent transition-colors">Terms of Curation</Link> and <Link href="/privacy-haven" className="text-aureve-charcoal underline cursor-pointer hover:text-aureve-accent transition-colors">Privacy Haven</Link>.
             </p>
           </div>
         </div>

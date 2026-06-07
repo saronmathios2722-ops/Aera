@@ -6,6 +6,8 @@ import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { ArrowRight, Shirt, Sparkles, Wind, Layout, Heart } from "lucide-react";
 import { useRef } from "react";
 
+import { Footer } from "@/components/layout/Footer";
+
 export default function Home() {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -248,22 +250,7 @@ export default function Home() {
          </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative z-10 flex flex-col items-center justify-center py-24 px-6 bg-[#F9F7F2] border-t border-aureve-muted/10">
-        <div className="flex items-center gap-3 mb-10">
-          <div className="relative h-10 w-10 overflow-hidden rounded-full border border-aureve-muted/20 opacity-50">
-             <div className="absolute inset-0 bg-aureve-muted opacity-10" />
-             <Shirt className="absolute inset-0 m-auto h-5 w-5 text-aureve-muted" />
-          </div>
-          <span className="font-serif text-2xl tracking-[0.2em] text-aureve-black uppercase font-bold opacity-40">Aera</span>
-        </div>
-        <div className="flex gap-8 mb-12 text-[10px] font-bold uppercase tracking-[0.3em] text-aureve-muted/40">
-           <a href="#" className="hover:text-aureve-muted transition-colors">Privacy Haven</a>
-           <a href="#" className="hover:text-aureve-muted transition-colors">Terms of Curation</a>
-           <a href="#" className="hover:text-aureve-muted transition-colors">About Us</a>
-        </div>
-        <p className="text-[9px] uppercase tracking-[0.6em] text-aureve-muted/20">Aera Sanctuary © 2026 — Designed with Intention</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
